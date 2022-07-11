@@ -5,16 +5,20 @@
 ## 1.	Introduction of Function Package
 
 ```
-├── scout_control
-├── scout_description
-└── scout_gazebo_sim
+├── scout_base
+├── scout_bringup
+├── scout_msgs
+└── ugv_gazebo_sim
 ```
 
-​	scout_gazebo_sim：The folder is gazebo simulation function package
+*	scout_base：The folder is scout mini odometry package
 
-​	scout_control: The folder is simulation controller function package
+*	scout_bringup: The folder is a gmapping_slam and navigation package
 
-​	scout_description: The folder is the function package of model file
+* scout_msgs: The folder is a package of scout messages
+
+* ugv_gazebo_sim: The folder is gazebo simulation package
+
 
 ## 2.	Environment
 
