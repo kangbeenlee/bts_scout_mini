@@ -1,7 +1,4 @@
-[TOC]
-
-# Scout Simulation Operation Process
-
+# BTS PROJECT for Scout mini Simulation in Gazebo
 ## 1.	Introduction of Function Package
 
 ```
@@ -31,39 +28,8 @@
 ​	Download and install ros-control function package, ros-control is the robot control middleware provided by ROS
 
 ```
-sudo apt-get install ros-melodic-ros-control
+sudo apt-get install libasio-dev ros-melodic-ros-control ros-melodic-ros-controllers ros-melodic-gazebo-ros ros-melodic-gazebo-ros-control ros-melodic-joint-state-publisher-gui ros-melodic-teleop-twist-keyboard ros-melodic-navigation ros-melodic-gmapping
 ```
-
-​	Download and install ros-controllers function package, ros-controllers are the kinematics plug-in of common models provided by ROS
-
-```
-sudo apt-get install ros-melodic-ros-controllers
-```
-
-​	Download and install gazebo-ros function package, gazebo-ros is the communication interface between gazebo and ROS, and connect the ROS and Gazebo
-
-```
-sudo apt-get install ros-melodic-gazebo-ros
-```
-
-​	Download and install gazebo-ros-control function package, gazebo-ros-control is the communication standard controller between ROS and Gazebo
-
-```
-sudo apt-get install ros-melodic-gazebo-ros-control
-```
-
-​	Download and install joint-state-publisher-gui package.This package is used to visualize the joint control.
-
-```
-sudo apt-get install ros-melodic-joint-state-publisher-gui 
-```
-
-​	Download and install teleop-twist-keyboard function package, telop-twist-keyboard is keyboard control function package, the robot can be controlled to move forward, left, right and backward through "i", "j", "l",and "," on the keyboard
-
-```
-sudo apt-get install ros-melodic-teleop-twist-keyboard 
-```
-
 
 
 ## 3.	About Usage
