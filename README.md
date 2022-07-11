@@ -116,7 +116,7 @@ source devel/setup.bash
 ​	Start the simulation environment of scout mini
 
 ```
-roslaunch scout_description display_scout_mini.launch 
+roslaunch scout_gazebo_sim scout_mini_playpen.launch
 ```
 
 ​	Control by keyboard, scout_mini can be controlled to move forward, left, right and backward
