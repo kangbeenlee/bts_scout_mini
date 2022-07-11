@@ -17,73 +17,58 @@
 * ugv_gazebo_sim: The folder is gazebo simulation package
 
 
+
 ## 2.	Environment
 
-### Development Environment
+### 2-1. Development Environment
 
-​	ubuntu 18.04 + [ROS Melodic desktop full](http://wiki.ros.org/melodic/Installation/Ubuntu)
+ubuntu 18.04 + [ROS Melodic desktop full](http://wiki.ros.org/melodic/Installation/Ubuntu)
 
-### Download and install required function package
+### 2-2. Download and install required function package
 
-​	Download and install ros-control function package, ros-control is the robot control middleware provided by ROS
+Download and install ros-control function package, ros-control is the robot control middleware provided by ROS
 
 ```
 sudo apt-get install libasio-dev ros-melodic-ros-control ros-melodic-ros-controllers ros-melodic-gazebo-ros ros-melodic-gazebo-ros-control ros-melodic-joint-state-publisher-gui ros-melodic-teleop-twist-keyboard ros-melodic-navigation ros-melodic-gmapping
 ```
 
 
+
 ## 3.	About Usage
 
-### 1、1.	Create workspace, download simulation model function package and compile
+### 3-1.	Create workspace, download simulation model function package and compile
 
-​		Open a new terminal and create a workspace named scout_ws, enter in the terminal:
-
-```
-mkdir scout_ws
-```
-
-​		Enter the scout_ws folder
+Open a new terminal and create a workspace named scout_ws, enter in the terminal:
 
 ```
-cd scout_ws
+mkdir -p ~/scout_ws/src
 ```
 
-​		Create a folder to store function package named src
+Enter the scout_ws/src folder
 
 ```
-mkdir src
+cd ~/scout_ws/src
 ```
 
-​		Enter the src folder
-
-```
-cd src
-```
-
-​		Initialize folder
-
-```
-catkin_init_workspace
-```
-
-​		Download simulation model function package
+Download simulation model function package
 
 ```
 git clone https://github.com/agilexrobotics/ugv_sim/scout.git
 ```
 
-​		Enter the scout_ws folder
+Enter the scout_ws folder
 
 ```
 cd scout_ws
 ```
 
-​		Confirm whether the dependency of the function package is installed
+Confirm whether the dependency of the function package is installed
+
 ```
 rosdep install --from-paths src --ignore-src -r -y 
 ```
 
-​		Compile
+Compile
 
 ```
 catkin_make
@@ -91,83 +76,56 @@ catkin_make
 
 
 
-### 2、2.	Run the star file of scout_v2 and scout_mini, and visualize the urdf file in Rviz
+### 3-2.	Start the gazebo simulation environment of scout_mini and control scout_v2 and scout_mini movement in the gazebo
 
-​	Enter the scout_ws folder
-
-```
-cd scout_ws
-```
-
-​	Declare the environment variable
-
-```
-source devel/setup.bash
-```
-
-​	Run the start file of scout_v2 model and visualize the model in Rviz
-
-```
-roslaunch scout_description display_scout_v2.launch 
-```
-
-![img](image/scoutv2_rviz.png) 
-
-​	Run the start file of scout_mini model and visualize the model in Rviz
-
-```
-roslaunch scout_description display_scout_mini.launch 
-```
-
-![img](image/scout_mini_rviz.png) 
-
-### 3、3.	Start the gazebo simulation environment of scout_v2 and scout_mini and control scout_v2 and scout_mini movement in the gazebo
-
-​	Enter the scout_ws folder
+Enter the scout_ws folder
 
 ```
 cd scout_ws
 ```
 
-​	Declare the environment variable
+Declare the environment variable
 
 ```
 source devel/setup.bash
 ```
 
-​	Start the simulation environment of scout_v2
-
-```
-roslaunch scout_gazebo_sim scout_empty_world.launch
-```
-
-![img](image/scoutv2_gazebo.png) 
-
-#Control by keyboard, the scout2.0 and scout_mini can be controlled to move forward, left, right and backward through "i", "j", "l",and "," on the keyboard
-
-```
-rosrun teleop_twist_keyboard teleop_twist_keyboard.py 
-```
-
-![img](image/teleop.png) 
-
-​	Start the simulation environment of scout_mini
+Start the simulation environment of scout_mini
 
 ```
 roslaunch scout_gazebo_sim scout_mini_playpen.launch
 ```
 
-![img](image/scout_mini_gazebo.png) 
+Control by keyboard, scout_mini can be controlled to move forward, left, right and backward
 
-#Control by keyboard, the scout2.0 and scout_mini can be controlled to move forward, left, right and backward through "i", "j", "l",and "," on the keyboard
+```
+roslaunch scout_teleop scout_teleop_key.launch
+```
+
+or
 
 ```
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py 
 ```
 
-![img](image/teleop.png) 
 
 
+### 4.	Start the gazebo simulation environment of scout_mini and gmapping in the gazebo
+Start the simulation environment of scout_mini
 
- 
+```
+roslaunch scout_slam scout_slam.launch
+```
 
+You can save the map by
+
+```
+roslaunch scout_slam gmapping_save.launch
+```
+
+### 5. Start the gazebo simulation environment of scout_mini and navigation in the gazebo
+Start the simulation environment of scout_mini
+
+```
+roslaunch scout_navigation scout_navigation.launch
+```
