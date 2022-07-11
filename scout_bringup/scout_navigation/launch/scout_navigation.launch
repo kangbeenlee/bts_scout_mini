@@ -1,0 +1,23 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="map_file" default="$(find scout_slam)/maps/map.yaml"/>
+  <arg name="move_forward_only" default="false"/>
+
+
+  <!-- robot_state_publisher는 scout_mini_gazebo 실행시 spawn_scout_mini에서 실행된다 -->
+  <!--<node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/> -->
+
+  <!-- map server -->
+  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
+
+  <!-- AMCL -->
+  <include file="$(find scout_navigation)/launch/amcl.launch"/>
+
+  <!-- move_base -->
+  <include file="$(find scout_navigation)/launch/move_base.launch">
+    <arg name="move_forward_only" value="$(arg move_forward_only)"/>
+  </include>
+
+  <!-- rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find scout_navigation)/rviz/scout_navigation.rviz" />
+</launch>

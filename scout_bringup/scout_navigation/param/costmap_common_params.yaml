@@ -1,0 +1,24 @@
+# obstacle_range means that the robot will only update its map with information about obstacles that are within obstacle_range(m) of the base 
+# sensor data중에 obstacle_range 안에 물체가 있을 때, 장애물로 생각하고 costmap에 update한다
+obstacle_range: 3.0
+# sensor data중에 raytrace_range 바깥에 있는 데이터는 freespace로 costmap에 update한다
+raytrace_range: 3.5
+
+# 로봇의 외형, polygon으로 정의한다
+# The center of the robot is assumed to be at (0.0, 0.0) and both clockwise and counterclockwise specifications are supported
+footprint: [[-0.29, -0.306], [-0.29, 0.306], [0.29, 0.306], [0.29, -0.306]]
+
+# scout_mini
+# width : 0.580(mm)
+# length : 0.612
+# robot_radius: 0.422
+
+
+# 장애물로부터 buffer radius
+inflation_radius: 1.0
+cost_scaling_factor: 3.0
+
+# voxel(voxel-grid)와 costmap(costmap_2d) 중에서 사용할 costmap을 선택가능
+map_type: costmap
+observation_sources: scan
+scan: {sensor_frame: base_scan, data_type: LaserScan, topic: /scan, marking: true, clearing: true}

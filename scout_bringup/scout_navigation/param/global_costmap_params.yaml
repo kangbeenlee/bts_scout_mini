@@ -1,0 +1,12 @@
+global_costmap:
+  global_frame: map
+  robot_base_frame: base_footprint
+
+  # Hz
+  update_frequency: 10
+  publish_frequency: 10
+  transform_tolerance: 0.5
+
+  # map server node에 의해 제공되는 map.pgm로 초기화 유무
+  static_map: true
+ 

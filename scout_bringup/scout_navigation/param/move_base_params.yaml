@@ -1,0 +1,21 @@
+# move_base가 비활성화 상태일때 costmap node 정지 유무
+shutdown_costmaps: false
+# robot base에 속도를 주는 컨트롤 반복의 주기(Hz)
+controller_frequency: 10
+# space-clearing이 수행되기 전에 컨트롤러가 컨트롤 정보를 수신 대기하는 최대 시간(sec)
+controller_patience: 15.0
+
+# global planner 반복 주기(Hz)
+planner_frequency: 5.0
+# space-clearing이 수행되기 전 사용가능한 plan을 찾는데 기다리는 최대 시간(sec)
+planner_patience: 5.0
+# global costmap에서 5.0sec마다 global planner를 실행시킴
+# global planner가 실행하고 (global planner를 기다리고), space-clearing을 실행
+# space-clearing : 현재 위치를 중심으로 raytrace_range 바깥은 free-space로, obstacle_range 안쪽은 장애물을 인식해 costmap update
+
+# recovery behavior를 실행하기 전, 로봇이 왔다갔다 하는 행동을 허용하는 시간(sec)
+oscillation_timeout: 10.0
+# oscillation_timeout을 초기화하는 로봇의 최소이동 거리
+oscillation_distance: 0.2
+# recovery behavior의 costmap 초기화 과정에서 conservative_reset_dist보다 먼 장애물은 costmap에서 삭제한다.
+conservative_reset_dist: 3.0
